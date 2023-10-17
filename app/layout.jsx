@@ -2,21 +2,21 @@ import "@styles/globals.css";
 
 export const metadata = {
   title: "AI Prompts",
-  description: "Discover & share AI prompts"
+  description: "Discover & share AI prompts",
 };
 
-const RootLayout = () => {
-  return <html lang="en">
-    <body>
+const RootLayout = ({ children }) => {
+  return (
+    <html lang="en">
+      <body>
         <div className="main">
-            <div className="gradient" />
+          <div className="gradient" />
         </div>
 
-        <main className="app">
-            {children}
-        </main>
-    </body>
-  </html>;
+        <main className="app">{children}</main>
+      </body>
+    </html>
+  );
 };
 
 export default RootLayout;
