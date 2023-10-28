@@ -14,11 +14,17 @@ const CreatePrompt = () => {
     tag: "",
   });
 
-  const createPrompt = async (e) {
-    
-  }
+  const createPrompt = async (e) => {};
 
-  return <Form />;
+  return (
+    <Form
+      type="Create"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={createPrompt}
+    />
+  );
 };
 
 export default CreatePrompt;
