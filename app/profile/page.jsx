@@ -7,12 +7,15 @@ import { useRouter } from "next/navigation";
 import Profile from "@components/Profile";
 
 const MyProfile = () => {
-  const handleEdit = () => {};
-
-  const handleDelete = async () => {};
-
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
+  const router = useRouter();
+
+  const handleEdit = (post) => {
+    router.push(`/update-prompt?id=${post._id}`)
+  };
+
+  const handleDelete = async (post) => {};
 
   useEffect(() => {
     const fetchPosts = async () => {
