@@ -12,10 +12,29 @@ const MyProfile = () => {
   const router = useRouter();
 
   const handleEdit = (post) => {
-    router.push(`/update-prompt?id=${post._id}`)
+    router.push(`/update-prompt?id=${post._id}`);
   };
 
-  const handleDelete = async (post) => {};
+  const handleDelete = async (post) => {
+    const hasConfirmed = confirm(
+      "Are you sure you want to delete this prompt?"
+    );
+
+    if (hasConfirmed) {
+      try {
+        // Fetching post you want to delete
+        await fetch(`/api/prompt/${post._id.toString()}`, { method: "DELETE" });
+
+        // Filter through all posts while filtering out the deleted post.
+        const filteredPosts = posts.filter((p) => p._id !== post._id);
+
+        // Set value of setPosts to new filteredPosts value.
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
